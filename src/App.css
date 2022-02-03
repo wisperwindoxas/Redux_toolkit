@@ -27,12 +27,58 @@
 .App-link {
   color: #61dafb;
 }
+label input {
+  width: 300px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid rgb(6, 68, 199);
+  margin-top: 20px;
+  outline: none;
+}
+label button {
+  width: 150px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid transparent;
+  outline: none;
+  background-color: rgb(8, 32, 216);
+  color: #fff;
+}
+label button:active {
+  opacity: 0.8;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo_item {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+li {
+  width: 600px;
+  padding: 10px;
+  margin: 10px auto;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  align-items: center;
+  box-shadow: 0 0 10px 2px rgb(47, 62, 225);
+  font-size: 18px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+li input {
+  width: 40px;
+  height: 20px;
+}
+
+li span:nth-of-type(1) {
+  text-align: left;
+}
+li span:nth-of-type(2) {
+  text-align: left;
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
 }
