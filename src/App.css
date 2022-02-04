@@ -73,6 +73,10 @@ li input {
   height: 20px;
 }
 
+li input:checked +  span{
+  text-decoration: line-through;
+}
+
 li span:nth-of-type(1) {
   text-align: left;
 }
