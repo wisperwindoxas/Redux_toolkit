@@ -1,41 +1,45 @@
 import { useState} from 'react'
 import './App.css';
+import {useDispatch} from 'react-redux';
+import {addTodo, removeTodo} from './store/todoSlice';
 import InputFiled from './components/InputFiled';
 import TodoList from './components/TodoList';
 function App() {
-  const [todo, setTodo] = useState([])
+
+
   const [text, setText] = useState('')
+  const dispatch = useDispatch()
+
+  const addTask = () => {
+    dispatch(addTodo({text}))
+    setText("")
+  }
+
+
 
   const removeTodo = (todoId) => {
-    setTodo(todo.filter(item => item.id !== todoId))
+    // setTodo(todo.filter(item => item.id !== todoId))
   }
 
   const toggleTodoComploted = (todoId) => {
-    setTodo(todo.map(todo => {
-      if(todo.id !== todoId) return todo;
+    // setTodo(todo.map(todo => {
+    //   if(todo.id !== todoId) return todo;
 
 
-      return {
-        ...todo,
-        completed: !todo.completed
-      }
-    }))
+    //   return {
+    //     ...todo,
+    //     completed: !todo.completed
+    //   }
+    // }))
   }
 
-  const addTodo = (e) => {
-    if(text.trim().length){
-      setTodo([...todo,{id:new Date().toISOString(), text, completed:false}])
-      setText('')
-    }
-     
- 
-  }
+
 
   const EnterKey = (e) => {
-      if(e.key === 'Enter'){
-        setTodo([...todo,{id:new Date().toISOString(), text, completed:false}])
-        setText('')
-      }
+      // if(e.key === 'Enter'){
+      //   setTodo([...todo,{id:new Date().toISOString(), text, completed:false}])
+      //   setText('')
+      // }
   }
 
 
@@ -45,14 +49,10 @@ function App() {
       <InputFiled 
           enterKey={EnterKey} 
           setText={setText} 
-          addTodo={addTodo}
+          addTodo={addTask}
           text={text}
       />
-      <TodoList 
-        todo={todo} 
-        removeTodo={removeTodo} 
-        toggleTodoComploted={toggleTodoComploted}
-      />
+      <TodoList/>
     </div>
   );
 }

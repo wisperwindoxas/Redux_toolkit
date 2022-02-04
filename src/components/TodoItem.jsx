@@ -1,8 +1,10 @@
 import React from 'react';
-
-export default function TodoItem({id,text, completed, removeTodo, toggleTodoComploted }) {
+import {useDispatch} from 'react-redux';
+import{removeTodo} from '../store/todoSlice'
+export default function TodoItem({id,text, completed, toggleTodoComploted }) {
+   const dispatch = useDispatch()
   return(
-    
+     
         <li >
             <input 
             type="checkbox" checked={completed}  
@@ -10,7 +12,7 @@ export default function TodoItem({id,text, completed, removeTodo, toggleTodoComp
             
             />
             <span>{text}</span>
-            <span onClick={(e) => removeTodo(id)} style={{color:"red"}}>&times;</span>
+            <span onClick={(e) => dispatch(removeTodo({id}))} style={{color:"red"}}>&times;</span>
         </li>
       
   )
