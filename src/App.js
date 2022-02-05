@@ -1,7 +1,7 @@
 import { useState} from 'react'
 import './App.css';
 import {useDispatch} from 'react-redux';
-import {addTodo, removeTodo} from './store/todoSlice';
+import {addTodo, enterKeyAddTodo} from './store/todoSlice';
 import InputFiled from './components/InputFiled';
 import TodoList from './components/TodoList';
 function App() {
@@ -14,12 +14,13 @@ function App() {
     dispatch(addTodo({text}))
     setText("")
   }
-
-
-
-  const removeTodo = (todoId) => {
-    // setTodo(todo.filter(item => item.id !== todoId))
+  const addTaskKey = (e) => {
+    if(e.key === 'Enter'){
+      dispatch(enterKeyAddTodo({text}))
+      setText("")
+      }
   }
+
 
   const toggleTodoComploted = (todoId) => {
     // setTodo(todo.map(todo => {
@@ -35,19 +36,13 @@ function App() {
 
 
 
-  const EnterKey = (e) => {
-      // if(e.key === 'Enter'){
-      //   setTodo([...todo,{id:new Date().toISOString(), text, completed:false}])
-      //   setText('')
-      // }
-  }
 
 
 
   return (
     <div className="App" > 
       <InputFiled 
-          enterKey={EnterKey} 
+          enterKey={addTaskKey} 
           setText={setText} 
           addTodo={addTask}
           text={text}
